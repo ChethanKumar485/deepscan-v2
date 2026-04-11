@@ -282,14 +282,24 @@ This means:
 > Always consult certified human forensic experts for consequential decisions.
 
 ---
+## 🙌 Contributing
+
+Pull requests are welcome! Please open an issue first to discuss any major changes.
 
 ## 📄 License
 
 MIT License — see [LICENSE](LICENSE) for details.
 
+Copyright © 2026 Chethan Kumar
+
 ---
 
-## 🙌 Contributing
 
-Pull requests are welcome! Please open an issue first to discuss any major changes.
+## 👨‍💻 Author
 
+**Chethan Kumar**
+- GitHub: [@ChethanKumar485](https://github.com/ChethanKumar485)
+
+---
+## ⭐ Support
+> *If you like this project, give it a ⭐ on GitHub! — deep fake detection on multimodalmedia makes sure it stays safe."* 🚀
