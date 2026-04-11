@@ -12,21 +12,51 @@
 
 ## 📸 Screenshots
 
+#Dashboard
 
 <p align="center">
-  <img src="<img width="1085" height="562" alt="image" src="https://github.com/user-attachments/assets/603cd924-e1c3-40a2-8041-d1b459f0d9ca" />
+<img width="1600" height="640" alt="image" src="https://github.com/user-attachments/assets/09ba543e-af33-4683-a47a-67be7c1fcaf2" />
+</p>
+##Select Modality
+
+<p align="center">
+  <img width="592" height="529" alt="image" src="https://github.com/user-attachments/assets/54351012-78aa-47ed-b7e8-9dbbad8f8be3" />
+</p>
+
+
+
+##THREAT  INTEL
+
+<p align="center">
+<img width="611" height="391" alt="image" src="https://github.com/user-attachments/assets/5a18f2bd-d4bd-4281-884e-b4576d649fff" />
 
 </p>
 
+##scanning History
 <p align="center">
-  <img src="<img width="572" height="774" alt="image" src="https://github.com/user-attachments/assets/8e80e7fa-a4e7-4fa5-bca1-e23f2601e784" />
+<img width="1600" height="492" alt="image" src="https://github.com/user-attachments/assets/1f68f623-0713-4751-8f5d-3f45fdecafb7" />
 
 </p>
 
+##ANALYSIS LAYER
 <p align="center">
-  <img src="<img width="967" height="615" alt="image" src="https://github.com/user-attachments/assets/68fcc179-a7b4-491a-a647-82fc6cc75329" />
+<img width="1448" height="537" alt="image" src="https://github.com/user-attachments/assets/8ce3d701-5402-476b-8582-d6a00e93e47c" />
 
 </p>
+
+##SCANNING PROCESS
+<p align="center">
+<img width="967" height="615" alt="image" src="https://github.com/user-attachments/assets/17612d6d-b8e8-4438-b35a-e4dca56c9c73" />
+
+</p>
+
+##REPORT
+<p align="center">
+<img width="1438" height="906" alt="image" src="https://github.com/user-attachments/assets/11db7cea-7060-4914-a44e-7d779f35ebc3" />
+
+
+</p>
+
 ---
 
 ## ✨ Features
