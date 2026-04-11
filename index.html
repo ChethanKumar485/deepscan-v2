@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeepScan v2.0 — Multimodal Deepfake Detection</title>
+  <meta name="description" content="AI-powered multimodal deepfake detection system for image, audio, video, and text media." />
+  <meta name="author" content="DeepScan" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Corner decorations -->
+  <div class="corner-dec tl"></div>
+  <div class="corner-dec tr"></div>
+  <div class="corner-dec bl"></div>
+  <div class="corner-dec br"></div>
+  <div class="radial-glow"></div>
+
+  <div class="app">
+
+    <!-- ===== HEADER ===== -->
+    <header>
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00c8ff" stroke-width="1.5">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>DEEPSCAN</h1>
+          <p>MULTIMODAL FORENSIC DETECTION SYSTEM</p>
+        </div>
+      </div>
+      <div class="header-status">
+        <div class="status-pill">
+          <div class="status-dot"></div>
+          <span>SYSTEM ONLINE</span>
+        </div>
+        <div class="version-badge">v2.0</div>
+      </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <div class="hero">
+      <div class="hero-eyebrow">AI-POWERED FORENSIC ANALYSIS</div>
+      <h2>Detect <span class="highlight">Deepfakes</span><br />Across All Media</h2>
+      <p>Advanced multimodal detection engine analyzing image, audio, video, and text for synthetic media artifacts using state-of-the-art neural forensics.</p>
+      <div class="stats-bar">
+        <div class="stat">
+          <span class="stat-val" id="scanCount">0</span>
+          <span class="stat-label">SCANS RUN</span>
+        </div>
+        <div class="stat">
+          <span class="stat-val">98.4%</span>
+          <span class="stat-label">ACCURACY</span>
+        </div>
+        <div class="stat">
+          <span class="stat-val">4</span>
+          <span class="stat-label">MODALITIES</span>
+        </div>
+        <div class="stat">
+          <span class="stat-val">12+</span>
+          <span class="stat-label">DETECTORS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== MODALITY SELECTOR ===== -->
+    <div class="section-label">SELECT MODALITY</div>
+    <div class="modality-grid">
+      <div class="modality-card active" data-mode="image" onclick="setMode('image', this)">
+        <div class="modality-icon">🖼</div>
+        <span class="modality-name">IMAGE</span>
+        <div class="modality-desc">GAN / face forensics</div>
+      </div>
+      <div class="modality-card" data-mode="audio" onclick="setMode('audio', this)">
+        <div class="modality-icon">🎙</div>
+        <span class="modality-name">AUDIO</span>
+        <div class="modality-desc">voice synthesis detect</div>
+      </div>
+      <div class="modality-card" data-mode="video" onclick="setMode('video', this)">
+        <div class="modality-icon">🎬</div>
+        <span class="modality-name">VIDEO</span>
+        <div class="modality-desc">face-swap / lip-sync</div>
+      </div>
+      <div class="modality-card" data-mode="text" onclick="setMode('text', this)">
+        <div class="modality-icon">📄</div>
+        <span class="modality-name">TEXT / NLP</span>
+        <div class="modality-desc">AI-generated text</div>
+      </div>
+    </div>
+
+    <!-- ===== MAIN GRID ===== -->
+    <div class="main-grid">
+
+      <!-- Left: Upload + Analyze -->
+      <div>
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M8 2v8M5 5l3-3 3 3M3 11v2a1 1 0 001 1h8a1 1 0 001-1v-2"/>
+              </svg>
+              UPLOAD TARGET
+            </div>
+            <div class="status-pill" style="font-size:10px;padding:4px 10px;" id="modeLabel">MODE: IMAGE</div>
+          </div>
+          <div class="panel-body">
+
+            <!-- Drop Zone -->
+            <div class="drop-zone" id="dropZone">
+              <input type="file" id="fileInput" accept=".jpg,.jpeg,.png,.webp" onchange="onFileSelect(this)" />
+              <div class="drop-icon" id="dropIcon">⬆</div>
+              <div class="drop-title" id="dropTitle">Drop your file here</div>
+              <div class="drop-sub" id="dropSub">or click to browse · <span>jpg · png · webp · bmp</span></div>
+            </div>
+
+            <!-- File selected indicator -->
+            <div class="file-selected" id="fileSelectedBox">
+              <div class="file-icon-sm" id="fileIconSm">🖼</div>
+              <div class="file-info">
+                <div class="file-name" id="fileName">—</div>
+                <div class="file-size" id="fileSize">—</div>
+              </div>
+              <button class="file-remove" onclick="removeFile()" title="Remove">✕</button>
+            </div>
+
+            <!-- Text input (text mode only) -->
+            <div class="text-input-wrap" id="textInputWrap">
+              <div class="section-label" style="margin-bottom:8px;font-size:10px;">PASTE TEXT TO ANALYZE</div>
+              <textarea
+                class="text-area"
+                id="textInput"
+                placeholder="Paste article, post, or any text content here for AI-generated text detection..."
+                oninput="onTextInput()"
+              ></textarea>
+            </div>
+
+            <!-- Config -->
+            <div class="config-row">
+              <div class="config-item">
+                <label>SENSITIVITY</label>
+                <select class="config-select" id="sensitivity">
+                  <option value="high">HIGH — Strict</option>
+                  <option value="medium" selected>MEDIUM — Balanced</option>
+                  <option value="low">LOW — Permissive</option>
+                </select>
+              </div>
+              <div class="config-item">
+                <label>ANALYSIS DEPTH</label>
+                <select class="config-select" id="depth">
+                  <option value="fast">FAST — 5 detectors</option>
+                  <option value="full" selected>FULL — All detectors</option>
+                  <option value="deep">DEEP — Extended scan</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="analyze-btn" id="analyzeBtn" onclick="runAnalysis()" disabled>
+              ⚡ RUN FORENSIC ANALYSIS
+            </button>
+
+            <!-- Progress -->
+            <div class="progress-section" id="progressSection">
+              <div class="section-label" style="margin:16px 0 12px;font-size:10px;">ANALYSIS PIPELINE</div>
+              <div class="progress-steps" id="progressSteps"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Sidebar -->
+      <div class="sidebar">
+
+        <div class="mini-panel">
+          <div class="mini-header">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/>
+            </svg>
+            ACTIVE DETECTORS
+          </div>
+          <div class="mini-body">
+            <div class="detector-list" id="detectorList"></div>
+          </div>
+        </div>
+
+        <div class="mini-panel">
+          <div class="mini-header">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 3h10v10H3z"/><path d="M7 7h2v4H7zM7 5h2v1H7z"/>
+            </svg>
+            SCAN HISTORY
+          </div>
+          <div class="mini-body">
+            <div class="history-list" id="historyList">
+              <div class="hist-empty">// no scans yet</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mini-panel">
+          <div class="mini-header">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M8 2L3 5v4c0 3 2.5 5.5 5 6 2.5-.5 5-3 5-6V5z"/>
+            </svg>
+            THREAT INTEL
+          </div>
+          <div class="mini-body">
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div class="threat-row"><span>GAN-BASED FAKES</span><span class="threat-high">HIGH ▲</span></div>
+              <div class="threat-row"><span>VOICE CLONING</span><span class="threat-med">MED ►</span></div>
+              <div class="threat-row"><span>AI TEXT</span><span class="threat-high">HIGH ▲</span></div>
+              <div class="threat-row"><span>VIDEO FACESWAP</span><span class="threat-med">MED ►</span></div>
+            </div>
+            <div class="threat-updated">Last intel update: today</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== RESULTS ===== -->
+    <div class="results-section" id="resultsSection">
+      <div class="section-label" style="margin-bottom:20px;">FORENSIC REPORT</div>
+
+      <div class="verdict-banner" id="verdictBanner" data-label="DEEPFAKE">
+        <div class="verdict-circle" id="verdictCircle"></div>
+        <div class="verdict-text-wrap">
+          <div class="verdict-label" id="verdictLabel"></div>
+          <div class="verdict-meta" id="verdictMeta"></div>
+          <div class="verdict-conf" id="verdictConf"></div>
+        </div>
+      </div>
+
+      <div class="ai-analysis-box" id="aiAnalysisBox">
+        <div class="ai-loading" id="aiLoading">
+          <div class="ai-loading-dots"><span></span><span></span><span></span></div>
+          <span>Generating AI forensic analysis...</span>
+        </div>
+        <p id="aiAnalysisText" style="display:none;"></p>
+      </div>
+
+      <div class="section-label" style="margin-bottom:16px;">DETECTOR SCORES</div>
+      <div class="scores-grid" id="scoresGrid"></div>
+
+      <div class="section-label" style="margin-bottom:16px;">FORENSIC SIGNALS</div>
+      <div class="signals-row" id="signalsRow"></div>
+
+      <div class="section-label" style="margin-bottom:16px;">ANALYSIS LAYERS</div>
+      <table class="layers-table">
+        <thead>
+          <tr>
+            <th>LAYER</th>
+            <th>DESCRIPTION</th>
+            <th>STATUS</th>
+            <th>CONFIDENCE</th>
+          </tr>
+        </thead>
+        <tbody id="layersTbody"></tbody>
+      </table>
+
+      <div class="result-actions">
+        <button class="act-btn primary" onclick="copyReport()">📋 COPY REPORT</button>
+        <button class="act-btn" onclick="runAnalysis()">↺ RE-ANALYZE</button>
+        <button class="act-btn" onclick="resetAll()">✕ CLEAR</button>
+        <button class="act-btn" onclick="exportJSON()">⬇ EXPORT JSON</button>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-text">
+        DEEPSCAN v2.0 · Multimodal Deepfake Detection System · Powered by Claude AI<br />
+        For research and forensic purposes only · Results are probabilistic estimates
+      </div>
+    </footer>
+
+  </div><!-- /.app -->
+
+  <!-- JavaScript -->
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
