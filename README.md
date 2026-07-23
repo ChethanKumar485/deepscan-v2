@@ -75,6 +75,16 @@ deepscan-v2/
 └── .gitignore
 
 ```
+md
+## 🌐 Live Demo
+
+Explore the deployed application here:
+
+🔗 **DeepScan v2:** https://chethankumar485.github.io/deepscan-v2/
+
+> **GitHub Pages Deployment:** The application is hosted on GitHub Pages and is accessible directly through the link above.
+
+```
 
 ## 🚀 Quick Start
 <p align="center">
