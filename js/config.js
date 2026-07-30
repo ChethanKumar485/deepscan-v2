@@ -6,7 +6,7 @@
 const MODES = {
   image: {
     label: 'IMAGE',
-    accept: '.jpg,.jpeg,.png,.webp,.bmp',
+    accept: 'image/jpeg,image/png,image/webp,image/bmp',
     formats: 'jpg · png · webp · bmp · tiff',
     fileIcon: '🖼',
     color: '#00c8ff',
@@ -35,7 +35,7 @@ const MODES = {
 
   audio: {
     label: 'AUDIO',
-    accept: '.mp3,.wav,.ogg,.flac,.m4a',
+    accept: 'audio/mpeg,audio/wav,audio/ogg,audio/flac,audio/mp4,audio/x-m4a',
     formats: 'mp3 · wav · ogg · flac · m4a',
     fileIcon: '🎙',
     color: '#00ff9d',
@@ -63,7 +63,7 @@ const MODES = {
 
   video: {
     label: 'VIDEO',
-    accept: '.mp4,.mov,.avi,.webm,.mkv',
+    accept: 'video/mp4,video/quicktime,video/x-msvideo,video/webm,video/x-matroska',
     formats: 'mp4 · mov · avi · webm · mkv',
     fileIcon: '🎬',
     color: '#ffb800',
@@ -92,7 +92,7 @@ const MODES = {
 
   text: {
     label: 'TEXT/NLP',
-    accept: '.txt,.md,.csv',
+    accept: 'text/plain,text/markdown,text/csv',
     formats: 'txt · md · csv',
     fileIcon: '📄',
     color: '#ff3c6e',
